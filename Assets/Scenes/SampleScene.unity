@@ -1071,6 +1071,36 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5406940070053280731, guid: b98ebdaac82069444a9a884fbc1c9e83, type: 3}
   m_PrefabInstance: {fileID: 411634678}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &901861744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 901861745}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &901861745
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901861744}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 58.4584, y: -8.101403, z: -11.519936}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &938702285 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 5129325432356861424, guid: 4bdd6429b0e1220488b9f9636b6b8c9d, type: 3}
