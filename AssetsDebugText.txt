@@ -1,0 +1,313 @@
+
+
+DungeonEternal.Settings.PlayerSensitivityEditor.Awake () (at Assets/Scritps/Player/Player/PlayerSensitivityEditor.cs:17)
+UnityEngine.Object:Instantiate(GameObject, Transform, Boolean)
+SpawnerItem:CreateItems() (at Assets/Scritps/Room/Spawnes/SpawnerItem.cs:26)
+SpawnerItem:Start() (at Assets/Scritps/Room/Spawnes/SpawnerItem.cs:11)
+: NullReferenceException: Object reference not set to an instance of an object
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 1/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 2/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 3/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 4/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 1/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 2/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 3/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 4/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 1/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 2/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 3/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 4/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 1/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 2/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 3/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 4/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 1/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 2/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 3/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 4/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 1/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 2/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 3/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 4/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 1/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 2/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 3/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 4/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 1/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 2/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 3/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 4/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 1/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 2/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 3/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 4/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 1/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 2/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 3/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 4/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/TreasureRoom(Clone)/floor (1)"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 1/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 2/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 3/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 4/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 1/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 2/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 3/door_2"
+
+: BoxColliders does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "GenerateLevels/Room(Clone)/Doors/Door 4/door_2"
+
+UnityEngine.Debug:Log (object)
+DungeonEternal.Weapons.SemiAutomaticWeapon:Shoot () (at Assets/Scritps/Weapons/Version_2/SemiAutomaticWeapon.cs:42)
+DungeonEternal.Weapons.SemiAutomaticWeapon:Attack () (at Assets/Scritps/Weapons/Version_2/SemiAutomaticWeapon.cs:16)
+DungeonEternal.Player.HandsPlayer:Shoot () (at Assets/Scritps/Player/Player/HandsPlayer.cs:89)
+DungeonEternal.Player.HandsPlayer:<Awake>b__16_0 (UnityEngine.InputSystem.InputAction/CallbackContext) (at Assets/Scritps/Player/Player/HandsPlayer.cs:38)
+UnityEngine.InputSystem.LowLevel.NativeInputRuntime/<>c__DisplayClass7_0:<set_onUpdate>b__0 (UnityEngineInternal.Input.NativeInputUpdateType,UnityEngineInternal.Input.NativeInputEventBuffer*)
+UnityEngineInternal.Input.NativeInputSystem:NotifyUpdate (UnityEngineInternal.Input.NativeInputUpdateType,intptr)
+: Fire PistolBullet
+
+UnityEngine.Debug:Log (object)
+DungeonEternal.Weapons.FirearmsBullet:OnCollisionEnter (UnityEngine.Collision) (at Assets/Scritps/Weapons/Bullets/FirearmsBullet.cs:45)
+: Hit
+
+UnityEngine.Debug:Log (object)
+DungeonEternal.Weapons.SemiAutomaticWeapon:Shoot () (at Assets/Scritps/Weapons/Version_2/SemiAutomaticWeapon.cs:42)
+DungeonEternal.Weapons.SemiAutomaticWeapon:Attack () (at Assets/Scritps/Weapons/Version_2/SemiAutomaticWeapon.cs:16)
+DungeonEternal.Player.HandsPlayer:Shoot () (at Assets/Scritps/Player/Player/HandsPlayer.cs:89)
+DungeonEternal.Player.HandsPlayer:<Awake>b__16_0 (UnityEngine.InputSystem.InputAction/CallbackContext) (at Assets/Scritps/Player/Player/HandsPlayer.cs:38)
+UnityEngine.InputSystem.LowLevel.NativeInputRuntime/<>c__DisplayClass7_0:<set_onUpdate>b__0 (UnityEngineInternal.Input.NativeInputUpdateType,UnityEngineInternal.Input.NativeInputEventBuffer*)
+UnityEngineInternal.Input.NativeInputSystem:NotifyUpdate (UnityEngineInternal.Input.NativeInputUpdateType,intptr)
+: Fire PistolBullet
+
+UnityEngine.Debug:Log (object)
+DungeonEternal.Weapons.FirearmsBullet:OnCollisionEnter (UnityEngine.Collision) (at Assets/Scritps/Weapons/Bullets/FirearmsBullet.cs:45)
+: Hit
