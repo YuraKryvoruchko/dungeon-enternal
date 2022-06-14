@@ -7,7 +7,7 @@ using DungeonEternal.Weapons;
 namespace DungeonEternal.AI
 {
     [RequireComponent(typeof(EnemyVision))]
-    public class Boss : Enemy
+    public class Boss : Enemy, IEjection
     {
         [Space]
         [SerializeField] private float _rotationSpeed;
@@ -30,9 +30,11 @@ namespace DungeonEternal.AI
 
         private void Awake()
         {
-            NavMeshAgent = GetComponent<NavMeshAgent>();
-            NavMeshAgent.speed = Speed;
-            NavMeshAgent.stoppingDistance = MinDistance;
+            NavAgent = GetComponent<NavMeshAgent>();
+            NavAgent.speed = Speed;
+            NavAgent.stoppingDistance = MinDistance;
+
+            EnemyRigidbody = GetComponent<Rigidbody>();
 
             _animator = GetComponent<Animator>();
             _enemyVision = GetComponent<EnemyVision>();
@@ -44,18 +46,22 @@ namespace DungeonEternal.AI
         {
             _enemyVision.EnemyDiscovered += () => TargetDetected = true;
             _enemyVision.EnemyEscape += () => TargetDetected = false;
+
+            for (int i = 0; i < PartsOfTheBody.Length; i++)
+                PartsOfTheBody[i].OnEjection += Eject;
         }
         protected override void OnDisableObject()
         {
             _enemyVision.EnemyDiscovered -= () => TargetDetected = true;
             _enemyVision.EnemyEscape -= () => TargetDetected = false;
+
+            for (int i = 0; i < PartsOfTheBody.Length; i++)
+                PartsOfTheBody[i].OnEjection -= Eject;
         }
 
         protected override void OnStart()
         {
             FindEnemy();
-
-            //StartCoroutine(_attackCorutine);
         }
 
         protected override void OnUpdate()
@@ -115,7 +121,7 @@ namespace DungeonEternal.AI
         }
         private void DepartureFromEnemy()
         {
-            NavMeshAgent.Move(Vector3.back * Speed * Time.deltaTime);
+            NavAgent.Move(Vector3.back * Speed * Time.deltaTime);
         }
         private IEnumerator Shoot()
         {
@@ -129,6 +135,11 @@ namespace DungeonEternal.AI
 
                 yield return new WaitForSeconds(FireRate);
             }
+        }
+
+        public void Eject(Vector3 direction, float energy)
+        {
+            EnemyRigidbody.AddForce(direction * energy, ForceMode.VelocityChange);
         }
     }
 }

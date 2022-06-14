@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
-using DungeonEternal.AI;
 
 namespace DungeonEternal.Weapons
 {
+    public interface IEjection
+    {
+        public void Eject(Vector3 direction, float energy);
+    }
+
     public class Sword : СoldSteel
     {
         [Header("Sword properties")]
         [SerializeField] private float _damage;
         [SerializeField] private float _maxDistace = 3f;
+        [SerializeField] private float _ejectEnergy;
         [Tooltip("Attack animation duration")]
         [SerializeField] private float _speedAttack;
-        [SerializeField] private float _shockForce;
 
         [Header("Audio properties")]
         [SerializeField] private AudioSource _audioSource;
@@ -36,15 +40,15 @@ namespace DungeonEternal.Weapons
 
                 StartCoroutine(Timer());
 
-                Enemy enemy = GetEnemy();
+                Ray ray = ShootAndGetRay();
 
-                if (enemy != null)
+                if (Physics.Raycast(ray, out RaycastHit hit, _maxDistace, 1, QueryTriggerInteraction.Ignore))
                 {
-                    if(enemy.TryGetComponent(out IHealth health))
+                    if (hit.collider.TryGetComponent(out IHealth health))
                         InflictDamage(health);
 
-                    Ray ray = ShootAndGetRay();
-                    ToPush(enemy.transform, ray.direction);
+                    if (hit.collider.TryGetComponent(out IEjection еjectObject))
+                        еjectObject.Eject(ray.direction.normalized, _ejectEnergy);
                 }
 
                 OnAttack?.Invoke();
@@ -52,35 +56,11 @@ namespace DungeonEternal.Weapons
         }
         public override void Attack(Transform target) { }
 
-        private void ToPush(Transform enemy, Vector3 rayDirection)
-        {
-            Rigidbody enemyRigidbody = enemy.GetComponent<Rigidbody>();
-
-            enemyRigidbody.AddForce(rayDirection * _shockForce, ForceMode.Impulse);
-        }
         private void InflictDamage(IHealth health)
         {
             Debug.Log(health.GetType());
 
             health.TakeDamage(_damage);
-        }
-        private Enemy GetEnemy()
-        {
-            Ray ray = ShootAndGetRay();
-
-            if (Physics.Raycast(ray, out RaycastHit hit, _maxDistace, 1, QueryTriggerInteraction.Ignore))
-            {
-                if (hit.transform.TryGetComponent(out Enemy enemy))
-                    return enemy;
-                else
-                    return default;
-            }
-            else
-            {
-                Debug.LogWarning("Ray did not collide with any object");
-
-                return default;
-            }
         }
         private Ray ShootAndGetRay()
         {

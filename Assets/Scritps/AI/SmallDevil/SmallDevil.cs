@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.AI;
+using DungeonEternal.Weapons;
 
 namespace DungeonEternal.AI
 {
     [RequireComponent(typeof(EnemyVision), typeof(Animator), typeof(NavMeshAgent))]
-    public class SmallDevil : Enemy
+    public class SmallDevil : Enemy, IEjection
     {
         [Space]
         [SerializeField] private string _nameAttackParameter = "onAttack";
@@ -18,9 +19,11 @@ namespace DungeonEternal.AI
 
         private void Awake()
         {
-            NavMeshAgent = GetComponent<NavMeshAgent>();
-            NavMeshAgent.speed = Speed;
-            NavMeshAgent.stoppingDistance = MinDistance;
+            NavAgent = GetComponent<NavMeshAgent>();
+            NavAgent.speed = Speed;
+            NavAgent.stoppingDistance = MinDistance;
+
+            EnemyRigidbody = GetComponent<Rigidbody>();
 
             _animator = GetComponent<Animator>();
 
@@ -30,11 +33,17 @@ namespace DungeonEternal.AI
         {
             _enemyVision.EnemyDiscovered += () => TargetDetected = true;
             _enemyVision.EnemyEscape += () => TargetDetected = false;
+
+            for (int i = 0; i < PartsOfTheBody.Length; i++)
+                PartsOfTheBody[i].OnEjection += Eject;
         }
         protected override void OnDisableObject()
         {
             _enemyVision.EnemyDiscovered -= () => TargetDetected = true;
             _enemyVision.EnemyEscape -= () => TargetDetected = false;
+
+            for (int i = 0; i < PartsOfTheBody.Length; i++)
+                PartsOfTheBody[i].OnEjection -= Eject;
         }
 
         protected override void OnStart()
@@ -75,7 +84,12 @@ namespace DungeonEternal.AI
 
         private void DepartureFromEnemy()
         {
-            NavMeshAgent.Move(Vector3.back * Speed * Time.deltaTime);
+            NavAgent.Move(Vector3.back * Speed * Time.deltaTime);
+        }
+
+        public void Eject(Vector3 direction, float energy)
+        {
+            EnemyRigidbody.AddForce(direction * energy, ForceMode.VelocityChange);
         }
     }
 }

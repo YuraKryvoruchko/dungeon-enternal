@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 
 namespace DungeonEternal.AI
 {
-    [RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
+    [RequireComponent(typeof(NavMeshAgent), typeof(Animator), typeof(Rigidbody))]
     public abstract class Enemy : MonoBehaviour, IHealth
     {
         [SerializeField] private float _health;
@@ -29,6 +29,8 @@ namespace DungeonEternal.AI
 
         private HealthPlayer _playerCurrent;
 
+        private Rigidbody _rigidbody;
+
         private NavMeshAgent _navMeshAgent;
 
         private float _distanceToPlayer;
@@ -45,17 +47,21 @@ namespace DungeonEternal.AI
 
         protected HealthPlayer PlayerCurrent { get => _playerCurrent; set => _playerCurrent = value; }
 
-        protected NavMeshAgent NavMeshAgent { get => _navMeshAgent; set => _navMeshAgent = value; }
+        protected Rigidbody EnemyRigidbody { get => _rigidbody; set => _rigidbody = value; }
+
+        protected NavMeshAgent NavAgent { get => _navMeshAgent; set => _navMeshAgent = value; }
 
         protected Vector3 Offset { get => _offset; set => _offset = value; }
+
+        protected PartOfTheBody[] PartsOfTheBody { get => _partsOfTheBody; set => _partsOfTheBody = value; }
 
         public static event Action<GameObject> Death;
         public virtual event Action OnDead;
 
         private void OnEnable()
         {
-            for (int i = 0; i < _partsOfTheBody.Length; i++)
-                _partsOfTheBody[i].OnTakeDamage += TakeDamage;
+            for (int i = 0; i < PartsOfTheBody.Length; i++)
+                PartsOfTheBody[i].OnTakeDamage += TakeDamage;
 
             Debug.Log("TakeDetect");
 
@@ -63,8 +69,8 @@ namespace DungeonEternal.AI
         }
         private void OnDisable()
         {
-            for (int i = 0; i < _partsOfTheBody.Length; i++)
-                _partsOfTheBody[i].OnTakeDamage -= TakeDamage;
+            for (int i = 0; i < PartsOfTheBody.Length; i++)
+                PartsOfTheBody[i].OnTakeDamage -= TakeDamage;
 
             OnDisableObject();
         }
@@ -98,7 +104,7 @@ namespace DungeonEternal.AI
         }
         protected bool SufficientDistanceToTheEnemy(float minDistance)                                                                       
         {
-            _distanceToPlayer = Vector3.Distance(NavMeshAgent.transform.position, 
+            _distanceToPlayer = Vector3.Distance(NavAgent.transform.position, 
                 PlayerCurrent.transform.position);
 
             if (_distanceToPlayer < minDistance)
@@ -124,7 +130,7 @@ namespace DungeonEternal.AI
         }
         protected float GetDistance(Vector3 point)
         {
-            _distanceToPlayer = Vector3.Distance(NavMeshAgent.transform.position, point);
+            _distanceToPlayer = Vector3.Distance(NavAgent.transform.position, point);
 
             return _distanceToPlayer;
         }
@@ -138,11 +144,11 @@ namespace DungeonEternal.AI
 
             Vector3 point = GetPointMove();
 
-            NavMeshAgent.SetDestination(point);
+            NavAgent.SetDestination(point);
         }
         protected virtual void Stay()
         {
-            NavMeshAgent.ResetPath();
+            NavAgent.ResetPath();
         }
 
         private Vector3 GetPointMove()

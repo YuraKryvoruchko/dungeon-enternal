@@ -1,13 +1,14 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using DungeonEternal.Weapons;
 
 using Random = UnityEngine.Random;
 
 namespace DungeonEternal.AI
 {
     [RequireComponent(typeof(EnemyVision), typeof(Animator), typeof(NavMeshAgent))]
-    public class Skull : Enemy
+    public class Skull : Enemy, IEjection
     {
         [Space]
         [SerializeField] private float _angleSpeed = 20f;
@@ -32,9 +33,11 @@ namespace DungeonEternal.AI
 
         private void Awake()
         {
-            NavMeshAgent = GetComponent<NavMeshAgent>();
-            NavMeshAgent.speed = Speed;
-            NavMeshAgent.stoppingDistance = MinDistance;
+            NavAgent = GetComponent<NavMeshAgent>();
+            NavAgent.speed = Speed;
+            NavAgent.stoppingDistance = MinDistance;
+
+            EnemyRigidbody = GetComponent<Rigidbody>();
 
             _animator = GetComponent<Animator>();
 
@@ -44,11 +47,17 @@ namespace DungeonEternal.AI
         {
             _enemyVision.EnemyDiscovered += () => TargetDetected = true;
             _enemyVision.EnemyEscape += () => TargetDetected = false;
+
+            for (int i = 0; i < PartsOfTheBody.Length; i++)
+                PartsOfTheBody[i].OnEjection -= Eject;
         }
         protected override void OnDisableObject()
         {
             _enemyVision.EnemyDiscovered -= () => TargetDetected = true;
             _enemyVision.EnemyEscape -= () => TargetDetected = false;
+
+            for (int i = 0; i < PartsOfTheBody.Length; i++)
+                PartsOfTheBody[i].OnEjection -= Eject;
         }
 
         protected override void OnStart()
@@ -98,12 +107,12 @@ namespace DungeonEternal.AI
 
         private void Dodging()
         {
-            NavMeshAgent.transform.RotateAround(PlayerCurrent.transform.position, _axis,
+            NavAgent.transform.RotateAround(PlayerCurrent.transform.position, _axis,
                 _angleSpeed * Time.deltaTime);
         }
         private void DepartureFromEnemy()
         {
-            NavMeshAgent.Move(Vector3.back * Speed * Time.deltaTime);
+            NavAgent.Move(Vector3.back * Speed * Time.deltaTime);
         }
         private IEnumerator TimerToChangeAxit()
         {
@@ -131,6 +140,11 @@ namespace DungeonEternal.AI
 
                 yield return new WaitForSeconds(FireRate);
             }
+        }
+
+        public void Eject(Vector3 direction, float energy)
+        {
+            EnemyRigidbody.AddForce(direction * energy, ForceMode.VelocityChange);
         }
     }
 }
