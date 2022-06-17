@@ -7,14 +7,15 @@ namespace DungeonEternal.Weapons
     public class Bow : Firearms
     {
         [Header("Bow properties")]
-        [SerializeField] private float _accumulationRate = 30f;
-
-        [SerializeField] private readonly float MAX_ENERGY = 50f;
+        [SerializeField] private float _timeToMaxEnergy = 3f;
+        [SerializeField] private float _maxEnergy = 50f;
 
         [Header("Bow animation properties")]
         [SerializeField] private string _namePullingParameters = "Pulling";
 
         private float _energy = 0f;
+
+        private const float MIN_ENERGY = 0f;
 
         public override event Action OnAttack;
         public override event Action WeaponEmpty;
@@ -36,19 +37,26 @@ namespace DungeonEternal.Weapons
             var arrow = CreateArrow(Vector3.zero);
 
             arrow.transform.SetParent(BulletPoint);
-
             arrow.transform.localRotation = Quaternion.LookRotation(Vector3.down, Vector3.forward);
 
             arrow.GetComponent<Collider>().enabled = false;
 
             Animator.SetTrigger(_namePullingParameters);
 
+            float currentTime = 0f;
+
             while (true)
             {
-                if (_energy < MAX_ENERGY)
-                    _energy += _accumulationRate * Time.deltaTime;
+                if (currentTime <= _timeToMaxEnergy)
+                {
+                    currentTime += Time.deltaTime;
+
+                    _energy = Mathf.Lerp(MIN_ENERGY, _maxEnergy, currentTime / _timeToMaxEnergy);
+                }
                 else
-                    _energy = MAX_ENERGY;
+                {
+                    _energy = _maxEnergy;
+                }
 
                 Debug.Log(_energy);
 

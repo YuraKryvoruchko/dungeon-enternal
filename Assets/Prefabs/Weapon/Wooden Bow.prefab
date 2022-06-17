@@ -1028,7 +1028,8 @@ MonoBehaviour:
   _usedTypeOfBullets: 3
   _bulletEjector: {fileID: 7401846357095062778}
   _weaponState: 0
-  _accumulationRate: 20
+  _timeToMaxEnergy: 1
+  _maxEnergy: 50
   _namePullingParameters: Pulling
 --- !u!114 &2796549899832590808
 MonoBehaviour:
