@@ -19,7 +19,8 @@ namespace DungeonEternal.AI
 
         [Tooltip("Animator properties")]
         [SerializeField] private string _nameAttackParameter = "onAttack";
-        [SerializeField] private string _nameWalkParameter = "onWalk";
+        [SerializeField] private string _nameBlockFollowParameter = "blockFollow";
+        [SerializeField] private string _nameDeadParameter = "onDead";
 
         private Animator _animator;
 
@@ -31,14 +32,8 @@ namespace DungeonEternal.AI
 
         private IEnumerator _timerToChangeAxit;
 
-        private void Awake()
+        protected override void OnAwake()
         {
-            NavAgent = GetComponent<NavMeshAgent>();
-            NavAgent.speed = Speed;
-            NavAgent.stoppingDistance = MinDistance;
-
-            EnemyRigidbody = GetComponent<Rigidbody>();
-
             _animator = GetComponent<Animator>();
 
             _enemyVision = GetComponent<EnemyVision>();
@@ -48,6 +43,8 @@ namespace DungeonEternal.AI
             _enemyVision.EnemyDiscovered += () => TargetDetected = true;
             _enemyVision.EnemyEscape += () => TargetDetected = false;
 
+            this.OnDead += Die;
+
             for (int i = 0; i < PartsOfTheBody.Length; i++)
                 PartsOfTheBody[i].OnEjection -= Eject;
         }
@@ -55,6 +52,8 @@ namespace DungeonEternal.AI
         {
             _enemyVision.EnemyDiscovered -= () => TargetDetected = true;
             _enemyVision.EnemyEscape -= () => TargetDetected = false;
+
+            this.OnDead -= Die;
 
             for (int i = 0; i < PartsOfTheBody.Length; i++)
                 PartsOfTheBody[i].OnEjection -= Eject;
@@ -78,6 +77,7 @@ namespace DungeonEternal.AI
                 Dodging();
 
                 _animator.SetTrigger(_nameAttackParameter);
+                _animator.SetBool(_nameBlockFollowParameter, true);
 
                 _timerWork = true;
             }
@@ -85,15 +85,13 @@ namespace DungeonEternal.AI
             {
                 _timerWork = false;
 
-                _animator.SetTrigger(_nameWalkParameter);
+                _animator.SetBool(_nameBlockFollowParameter, false);
 
                 float distance = GetDistance(PlayerCurrent.transform.position);
 
                 if (distance >= _extremeDistance && distance >= MinDistance)
                     MoveToEnemy();
-                else if (distance >= _extremeDistance && distance < MinDistance)
-                    Stay();
-                else
+                else if (distance <= _extremeDistance)
                     DepartureFromEnemy();
             }
 
@@ -110,9 +108,11 @@ namespace DungeonEternal.AI
             NavAgent.transform.RotateAround(PlayerCurrent.transform.position, _axis,
                 _angleSpeed * Time.deltaTime);
         }
-        private void DepartureFromEnemy()
+        private void Die()
         {
-            NavAgent.Move(Vector3.back * Speed * Time.deltaTime);
+            _animator.SetTrigger(_nameDeadParameter);
+
+            Debug.Log(gameObject.name + " dead");
         }
         private IEnumerator TimerToChangeAxit()
         {
@@ -128,17 +128,6 @@ namespace DungeonEternal.AI
                 _axis = _sideTurns[number];
 
                 yield return new WaitForSeconds(_timeToChangeAxit);
-            }
-        }
-        private IEnumerator AttackCorutine()
-        {
-            while (true)
-            {
-                yield return new WaitUntil(() => CanAttack());
-
-                Attack();
-
-                yield return new WaitForSeconds(FireRate);
             }
         }
 

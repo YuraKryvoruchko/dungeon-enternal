@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6873447703994146}
   - component: {fileID: 8728443500130191979}
   - component: {fileID: 6762094460264117091}
-  - component: {fileID: 2654526929144323023}
   m_Layer: 0
   m_Name: Bone.001
   m_TagString: Untagged
@@ -48,18 +47,6 @@ BoxCollider:
   m_Size: {x: 0.18086247, y: 0.37180805, z: 0.18540077}
   m_Center: {x: -0.0015977316, y: 0.17091063, z: -0.0054523945}
 --- !u!114 &6762094460264117091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705421256259003183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ab44428a41204f49871f32d015af743, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2654526929144323023
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -798,6 +785,7 @@ GameObject:
   - component: {fileID: 7771545932768813709}
   - component: {fileID: 5535267742656975945}
   - component: {fileID: 5535267742656976311}
+  - component: {fileID: 5469414034873291978}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -920,7 +908,24 @@ MonoBehaviour:
   _weaponsInHands:
   - {fileID: 3250735576109537695}
   _nameAttackParameter: onAttack
-  _nameWalkParameter: onWalk
+  _nameBlockFollowParameter: blockFollow
+  _nameDeadParameter: onDead
+--- !u!54 &5469414034873291978
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5535267742656976308}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5800574001056375218
 GameObject:
   m_ObjectHideFlags: 0

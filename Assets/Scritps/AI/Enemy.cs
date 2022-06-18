@@ -55,15 +55,22 @@ namespace DungeonEternal.AI
 
         protected PartOfTheBody[] PartsOfTheBody { get => _partsOfTheBody; set => _partsOfTheBody = value; }
 
-        public static event Action<GameObject> Death;
         public virtual event Action OnDead;
 
+        private void Awake()
+        {
+            NavAgent = GetComponent<NavMeshAgent>();
+            NavAgent.speed = Speed;
+            NavAgent.stoppingDistance = MinDistance;
+
+            EnemyRigidbody = GetComponent<Rigidbody>();
+
+            OnAwake();
+        }
         private void OnEnable()
         {
             for (int i = 0; i < PartsOfTheBody.Length; i++)
                 PartsOfTheBody[i].OnTakeDamage += TakeDamage;
-
-            Debug.Log("TakeDetect");
 
             OnEnableObject();
         }
@@ -74,7 +81,7 @@ namespace DungeonEternal.AI
 
             OnDisableObject();
         }
-
+        
         private void Start()
         {
             OnStart();
@@ -93,24 +100,12 @@ namespace DungeonEternal.AI
                 OnDead?.Invoke();
 
                 OnDead = null;
-
-                Destroy(gameObject);
             }
         }
 
         protected void FindEnemy()
         {
             PlayerCurrent = FindObjectOfType<HealthPlayer>();
-        }
-        protected bool SufficientDistanceToTheEnemy(float minDistance)                                                                       
-        {
-            _distanceToPlayer = Vector3.Distance(NavAgent.transform.position, 
-                PlayerCurrent.transform.position);
-
-            if (_distanceToPlayer < minDistance)
-                return true;
-            else
-                return false;
         }
         protected bool CanAttack()
         {
@@ -146,9 +141,9 @@ namespace DungeonEternal.AI
 
             NavAgent.SetDestination(point);
         }
-        protected virtual void Stay()
+        protected virtual void DepartureFromEnemy()
         {
-            NavAgent.ResetPath();
+            NavAgent.Move(Vector3.back * Speed * Time.deltaTime);
         }
 
         private Vector3 GetPointMove()
@@ -176,8 +171,10 @@ namespace DungeonEternal.AI
         }
 
         protected abstract void Attack();
+
         protected virtual void OnStart() { }
         protected virtual void OnUpdate() { }
+        protected virtual void OnAwake() { }
         protected virtual void OnEnableObject() { }
         protected virtual void OnDisableObject() { }
     }

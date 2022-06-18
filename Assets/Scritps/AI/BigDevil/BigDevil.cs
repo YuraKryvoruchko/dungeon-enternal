@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AI;
 using DungeonEternal.Weapons;
 
 namespace DungeonEternal.AI
@@ -15,7 +14,8 @@ namespace DungeonEternal.AI
 
         [Tooltip("Animator properties")]
         [SerializeField] private string _nameAttackParameter = "onAttack";
-        [SerializeField] private string _nameWalkParameter = "onWalk";
+        [SerializeField] private string _nameBlockFollowParameter = "blockFollow";
+        [SerializeField] private string _nameDeadParameter = "onDead";
         [Space]
         [SerializeField] private float _extremeDistance;
 
@@ -25,14 +25,8 @@ namespace DungeonEternal.AI
 
         private BulletEjector _bulletEjector;
 
-        private void Awake()
+        protected override void OnAwake()
         {
-            NavAgent = GetComponent<NavMeshAgent>();
-            NavAgent.speed = Speed;
-            NavAgent.stoppingDistance = MinDistance;
-
-            EnemyRigidbody = GetComponent<Rigidbody>();
-
             _bulletEjector = GetComponent<BulletEjector>();
 
             _enemyVision = GetComponent<EnemyVision>();
@@ -43,6 +37,8 @@ namespace DungeonEternal.AI
             _enemyVision.EnemyDiscovered += () => TargetDetected = true;
             _enemyVision.EnemyEscape += () => TargetDetected = false;
 
+            this.OnDead += Die;
+
             for (int i = 0; i < PartsOfTheBody.Length; i++)
                 PartsOfTheBody[i].OnEjection += Eject;
         }
@@ -50,6 +46,8 @@ namespace DungeonEternal.AI
         {
             _enemyVision.EnemyDiscovered -= () => TargetDetected = true;
             _enemyVision.EnemyEscape -= () => TargetDetected = false;
+
+            this.OnDead -= Die;
 
             for (int i = 0; i < PartsOfTheBody.Length; i++)
                 PartsOfTheBody[i].OnEjection -= Eject;
@@ -67,19 +65,18 @@ namespace DungeonEternal.AI
             if (CanAttack() == true)
             {
                 _animator.SetTrigger(_nameAttackParameter);
+                _animator.SetBool(_nameBlockFollowParameter, true);
             }
             else
             {
-                _animator.SetTrigger(_nameWalkParameter);
-
                 float distance = GetDistance(PlayerCurrent.transform.position);
 
                 if (distance >= _extremeDistance && distance >= MinDistance)
                     MoveToEnemy();
-                else if (distance >= _extremeDistance && distance < MinDistance)
-                    Stay();
-                else
+                else if (distance <= _extremeDistance)
                     DepartureFromEnemy();
+
+                _animator.SetBool(_nameBlockFollowParameter, false);
             }
 
 
@@ -94,9 +91,11 @@ namespace DungeonEternal.AI
             _bulletEjector.EnjectFromPool(_bulletPrefabs, _bulletPoint.position, direction);
         }
 
-        private void DepartureFromEnemy()
+        private void Die()
         {
-            NavAgent.Move(Vector3.back * Speed * Time.deltaTime);
+            _animator.SetTrigger(_nameDeadParameter);
+
+            Debug.Log(gameObject.name + " dead");
         }
 
         public void Eject(Vector3 direction, float energy)

@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
 using DungeonEternal.Weapons;
 
 namespace DungeonEternal.AI
@@ -13,39 +11,32 @@ namespace DungeonEternal.AI
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private float _extremeDistance;
 
+        [Tooltip("Weapon properties")]
         [SerializeField] private Firearms[] _weaponsInHands;
 
         [Tooltip("Animator properties")]
         [SerializeField] private string _nameAttackParameter = "onAttack";
-        [SerializeField] private string _nameWalkParameter = "onWalk";
+        [SerializeField] private string _nameBlockFollowParameter = "blockFollow";
+        [SerializeField] private string _nameDeadParameter = "onDead";
 
         public static event Action<Boss> Death;
-        public override event Action OnDead;
 
         private EnemyVision _enemyVision;
 
         private Animator _animator;
 
-        private IEnumerator _attackCorutine;
-
-        private void Awake()
-        {
-            NavAgent = GetComponent<NavMeshAgent>();
-            NavAgent.speed = Speed;
-            NavAgent.stoppingDistance = MinDistance;
-
-            EnemyRigidbody = GetComponent<Rigidbody>();
-
+        protected override void OnAwake()
+        {  
             _animator = GetComponent<Animator>();
             _enemyVision = GetComponent<EnemyVision>();
-
-            _attackCorutine = Shoot();
         }
 
         protected override void OnEnableObject()
         {
             _enemyVision.EnemyDiscovered += () => TargetDetected = true;
             _enemyVision.EnemyEscape += () => TargetDetected = false;
+
+            this.OnDead += Die;
 
             for (int i = 0; i < PartsOfTheBody.Length; i++)
                 PartsOfTheBody[i].OnEjection += Eject;
@@ -54,6 +45,8 @@ namespace DungeonEternal.AI
         {
             _enemyVision.EnemyDiscovered -= () => TargetDetected = true;
             _enemyVision.EnemyEscape -= () => TargetDetected = false;
+
+            this.OnDead -= Die;
 
             for (int i = 0; i < PartsOfTheBody.Length; i++)
                 PartsOfTheBody[i].OnEjection -= Eject;
@@ -69,18 +62,17 @@ namespace DungeonEternal.AI
             if (CanAttack() == true)
             {
                 _animator.SetTrigger(_nameAttackParameter);
+                _animator.SetBool(_nameBlockFollowParameter, true);
             }
             else
             {
-                _animator.SetTrigger(_nameWalkParameter);
+                _animator.SetBool(_nameBlockFollowParameter, false);
 
                 float distance = GetDistance(PlayerCurrent.transform.position);
 
                 if (distance >= _extremeDistance && distance >= MinDistance)
                     MoveToEnemy();
-                else if (distance >= _extremeDistance && distance < MinDistance)
-                    Stay();
-                else
+                else if(distance <= _extremeDistance)
                     DepartureFromEnemy();
             }
 
@@ -90,22 +82,6 @@ namespace DungeonEternal.AI
         {
             for(int i = 0; i < _weaponsInHands.Length; i++)
                 _weaponsInHands[i].Attack(PlayerCurrent.transform);
-        }
-
-        public override void TakeDamage(float damage)
-        {
-            Health -= damage;
-
-            if (Health <= 0)
-            {
-                Death?.Invoke(this);
-                OnDead?.Invoke();
-
-                Death = null;
-                OnDead = null;
-
-                Destroy(gameObject);
-            }
         }
 
         private void LookEnemy()
@@ -119,22 +95,14 @@ namespace DungeonEternal.AI
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 
                 _rotationSpeed * Time.deltaTime);
         }
-        private void DepartureFromEnemy()
+        private void Die()
         {
-            NavAgent.Move(Vector3.back * Speed * Time.deltaTime);
-        }
-        private IEnumerator Shoot()
-        {
-            while (true)
-            {
-                yield return new WaitUntil(() => CanAttack());
+            Death?.Invoke(this);
+            Death = null;
 
-                _animator.SetTrigger(_nameAttackParameter);
+            _animator.SetTrigger(_nameDeadParameter);
 
-                Attack();
-
-                yield return new WaitForSeconds(FireRate);
-            }
+            Debug.Log(gameObject.name + " dead");
         }
 
         public void Eject(Vector3 direction, float energy)

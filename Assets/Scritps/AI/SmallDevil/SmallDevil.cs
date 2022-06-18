@@ -7,9 +7,10 @@ namespace DungeonEternal.AI
     [RequireComponent(typeof(EnemyVision), typeof(Animator), typeof(NavMeshAgent))]
     public class SmallDevil : Enemy, IEjection
     {
-        [Space]
+        [Tooltip("Animator properties")]
         [SerializeField] private string _nameAttackParameter = "onAttack";
-        [SerializeField] private string _nameWalkParameter = "onWalk";
+        [SerializeField] private string _nameBlockFollowParameter = "blockFollow";
+        [SerializeField] private string _nameDeadParameter = "onDead";
 
         private Animator _animator;
 
@@ -17,14 +18,8 @@ namespace DungeonEternal.AI
 
         private EnemyVision _enemyVision;
 
-        private void Awake()
+        protected override void OnAwake()
         {
-            NavAgent = GetComponent<NavMeshAgent>();
-            NavAgent.speed = Speed;
-            NavAgent.stoppingDistance = MinDistance;
-
-            EnemyRigidbody = GetComponent<Rigidbody>();
-
             _animator = GetComponent<Animator>();
 
             _enemyVision = GetComponent<EnemyVision>();
@@ -34,6 +29,8 @@ namespace DungeonEternal.AI
             _enemyVision.EnemyDiscovered += () => TargetDetected = true;
             _enemyVision.EnemyEscape += () => TargetDetected = false;
 
+            this.OnDead += Die;
+
             for (int i = 0; i < PartsOfTheBody.Length; i++)
                 PartsOfTheBody[i].OnEjection += Eject;
         }
@@ -41,6 +38,8 @@ namespace DungeonEternal.AI
         {
             _enemyVision.EnemyDiscovered -= () => TargetDetected = true;
             _enemyVision.EnemyEscape -= () => TargetDetected = false;
+
+            this.OnDead -= Die;
 
             for (int i = 0; i < PartsOfTheBody.Length; i++)
                 PartsOfTheBody[i].OnEjection -= Eject;
@@ -59,18 +58,17 @@ namespace DungeonEternal.AI
             if (CanAttack() == true)
             {
                 _animator.SetTrigger(_nameAttackParameter);
+                _animator.SetBool(_nameBlockFollowParameter, true);
             }
             else
             {
-                _animator.SetTrigger(_nameWalkParameter);
+                _animator.SetBool(_nameBlockFollowParameter, false);
 
                 float distance = GetDistance(PlayerCurrent.transform.position);
 
                 if (distance >= _extremeDistance && distance >= MinDistance)
                     MoveToEnemy();
-                else if (distance >= _extremeDistance && distance < MinDistance)
-                    Stay();
-                else
+                else if (distance <= _extremeDistance)
                     DepartureFromEnemy();
 
                 transform.LookAt(new Vector3(PlayerCurrent.transform.position.x, transform.position.y, 
@@ -82,9 +80,11 @@ namespace DungeonEternal.AI
             PlayerCurrent.TakeDamage(Damage);
         }
 
-        private void DepartureFromEnemy()
+        private void Die()
         {
-            NavAgent.Move(Vector3.back * Speed * Time.deltaTime);
+            _animator.SetTrigger(_nameDeadParameter);
+
+            Debug.Log(gameObject.name + " dead");
         }
 
         public void Eject(Vector3 direction, float energy)

@@ -85,7 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rayCount: 4
   _distance: 3
-  _angle: 25
+  _angle: 30
   _startPoint: {fileID: 3174909207400902756}
   _offset: {x: 0, y: 0, z: 0}
   _detectedLayer:
@@ -145,7 +145,8 @@ MonoBehaviour:
   - {fileID: 3174909208150180914}
   - {fileID: 3174909207761864266}
   _nameAttackParameter: onAttack
-  _nameWalkParameter: onWalk
+  _nameBlockFollowParameter: blockFollow
+  _nameDeadParameter: onDead
   _extremeDistance: 1.2
 --- !u!65 &3174909208150180917
 BoxCollider:
