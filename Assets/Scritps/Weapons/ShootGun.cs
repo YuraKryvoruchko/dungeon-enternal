@@ -18,11 +18,23 @@ namespace DungeonEternal.Weapons
         [Space]
         [SerializeField] private ImprovementCharacteristics _improvementCharacteristics;
 
+        private static Dictionary<string, ImprovementCharacteristics> s_keyValuePairs;
+
         public override event Action OnAttack;
         public override event Action WeaponEmpty;
 
         private void Start()
         {
+            if (s_keyValuePairs.ContainsKey(ModelWeapon) == false)
+            {
+                s_keyValuePairs.Add(ModelWeapon, _improvementCharacteristics);
+            }
+            else
+            {
+                if (s_keyValuePairs.TryGetValue(ModelWeapon, out ImprovementCharacteristics improvementCharacteristics))
+                    _improvementCharacteristics = improvementCharacteristics;
+            }
+
             MaxCountStorBullets = _improvementCharacteristics.DataMaxCountStorBullets;
         }
 
@@ -81,11 +93,17 @@ namespace DungeonEternal.Weapons
         {
             MaxCountStorBullets = newCapacity;
             _improvementCharacteristics.DataMaxCountStorBullets = newCapacity;
+
+            if (s_keyValuePairs.TryGetValue(ModelWeapon, out ImprovementCharacteristics improvementCharacteristics))
+                improvementCharacteristics.DataMaxCountStorBullets = _improvementCharacteristics.DataMaxCountStorBullets;
         }
         public void IncreaseCapacityBy(int capacity)
         {
             MaxCountStorBullets += capacity;
             _improvementCharacteristics.DataMaxCountStorBullets += capacity;
+
+            if (s_keyValuePairs.TryGetValue(ModelWeapon, out ImprovementCharacteristics improvementCharacteristics))
+                improvementCharacteristics.DataMaxCountStorBullets += _improvementCharacteristics.DataMaxCountStorBullets;
         }
         public void IncreaseCapacityByInPercentage(float percentage)
         {
@@ -93,6 +111,9 @@ namespace DungeonEternal.Weapons
 
             MaxCountStorBullets += capacity;
             _improvementCharacteristics.DataMaxCountStorBullets += capacity;
+
+            if (s_keyValuePairs.TryGetValue(ModelWeapon, out ImprovementCharacteristics improvementCharacteristics))
+                improvementCharacteristics.DataMaxCountStorBullets += _improvementCharacteristics.DataMaxCountStorBullets;
         }
 
         public void SetNewReloadSpeed(float newReloadSpeed)

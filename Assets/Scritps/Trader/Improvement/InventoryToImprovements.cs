@@ -13,9 +13,6 @@ namespace DungeonEternal.TrayderImprovement
         public void OnEnable()
         {
             Broadcaster.OnBroadcastImprovement += AddImprovement;
-
-            foreach(var improvement in _workedImprovements)
-                improvement.RunImprovement(gameObject);
         }
         private void OnDisable()
         {
