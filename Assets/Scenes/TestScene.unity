@@ -6328,7 +6328,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _improvementType: 1
-  _improvements: []
+  _improvements:
+  - {fileID: 11400000, guid: 160be734198ecc64b805fe837fdaa039, type: 2}
 --- !u!1 &1646017715
 GameObject:
   m_ObjectHideFlags: 0

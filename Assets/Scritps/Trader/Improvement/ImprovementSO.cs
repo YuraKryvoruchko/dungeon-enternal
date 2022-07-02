@@ -10,13 +10,14 @@ namespace DungeonEternal.TrayderImprovement
 
         private GameObject _improvementObject; 
         
-        protected enum ImprovementStatus
+        public enum ImprovementStatus
         {
             Working,
             Stopped
         }
 
-        protected ImprovementStatus Status { get => _status; set => _status = value; }
+        public ImprovementStatus Status { get => _status; protected set => _status = value; }
+
         protected GameObject ImprovementObject { get => _improvementObject; set => _improvementObject = value; }
 
         public ImprovementType ImprovementType { get => _improvementType; }
