@@ -100,10 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _modelWeapon: Sword
+  _weaponType: 9
   _damage: 25
   _maxDistace: 3
+  _ejectEnergy: 0
   _speedAttack: 0.667
-  _shockForce: 10
   _audioSource: {fileID: 914849589458300500}
   _audioAttack: {fileID: 8300000, guid: 4922c764489056e40805ce6ca0b9a2f6, type: 3}
   _animator: {fileID: 8583507119043274784}

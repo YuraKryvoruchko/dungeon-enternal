@@ -41,7 +41,7 @@ namespace DungeonEternal.Weapons
         [SerializeField] private int _bulletsConversionRate;
 
         [SerializeField] private float _reloadTime = 3f;
-        [SerializeField] private float _timetimeBetweenShots = 0.1f;
+        [SerializeField] private float _timeBetweenShots = 0.1f;
 
         [SerializeField] private float _xSpread = 0;
         [SerializeField] private float _ySpread = 0;
@@ -67,8 +67,9 @@ namespace DungeonEternal.Weapons
 
         [SerializeField] private BulletEjector _bulletEjector;
 
-        private int _numberOfBulletsFromInventory = 0;
         [SerializeField] private WeaponState _weaponState;
+
+        private int _numberOfBulletsFromInventory = 0;
 
         private bool _canShoot = true;
 
@@ -79,7 +80,7 @@ namespace DungeonEternal.Weapons
         public abstract event Action WeaponEmpty;
 
         public int StorÑapacity { get => _storÑapacity; protected set => _storÑapacity = value; }
-
+        public int MaxCountStorBullets { get => _maxCountStorBullets; protected set => _maxCountStorBullets = value; }
         public int BulletsConversionRate { get => _bulletsConversionRate; }
 
         public BulletType UsedTypeOfBullets { get => _usedTypeOfBullets; }
@@ -90,7 +91,7 @@ namespace DungeonEternal.Weapons
         protected int IntbulletsEjectionInOneShot { get => _intbulletsEjectionInOneShot; }
 
         protected float ReloadTime { get => _reloadTime; }
-        protected float TimetimeBetweenShots { get => _timetimeBetweenShots; }
+        protected float TimeBetweenShots { get => _timeBetweenShots; }
 
         protected float XSpread { get => _xSpread; }
         protected float YSpread { get => _ySpread; }
@@ -178,7 +179,7 @@ namespace DungeonEternal.Weapons
         {
             CanShoot = false;
 
-            yield return new WaitForSeconds(TimetimeBetweenShots);
+            yield return new WaitForSeconds(TimeBetweenShots);
 
             CanShoot = true;
         }

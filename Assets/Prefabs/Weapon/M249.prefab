@@ -629,13 +629,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _modelWeapon: M249
+  _weaponType: 5
   "_stor\u0421apacity": 999999
   _maxCountStorBullets: 999999
   _bulletsNumberInOneShoot: 1
   _intbulletsEjectionInOneShot: 1
   _bulletsConversionRate: 0
   _reloadTime: 3
-  _timetimeBetweenShots: 0.1
+  _timeBetweenShots: 0.1
   _xSpread: 0
   _ySpread: 0
   _audioSource: {fileID: 6272436072714421436}

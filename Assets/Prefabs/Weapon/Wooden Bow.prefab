@@ -1008,13 +1008,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _modelWeapon: Bow
+  _weaponType: 10
   "_stor\u0421apacity": 1
   _maxCountStorBullets: 1
   _bulletsNumberInOneShoot: 1
   _intbulletsEjectionInOneShot: 1
   _bulletsConversionRate: 1
   _reloadTime: 0.1
-  _timetimeBetweenShots: 0
+  _timeBetweenShots: 0.1
   _xSpread: 0
   _ySpread: 0
   _audioSource: {fileID: 3996451217786443243}

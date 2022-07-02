@@ -550,13 +550,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _modelWeapon: Rifle
+  _weaponType: 2
   "_stor\u0421apacity": 20
   _maxCountStorBullets: 20
   _bulletsNumberInOneShoot: 1
   _intbulletsEjectionInOneShot: 1
   _bulletsConversionRate: 15
   _reloadTime: 2.78
-  _timetimeBetweenShots: 0.25
+  _timeBetweenShots: 0.1
   _xSpread: 0
   _ySpread: 0
   _audioSource: {fileID: 3216908606028553238}

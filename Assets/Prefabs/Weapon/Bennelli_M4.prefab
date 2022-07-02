@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 3589962491797309422}
   - component: {fileID: 7076885295659122433}
   - component: {fileID: 1397263667546487239}
-  - component: {fileID: 8263103122785947900}
   m_Layer: 0
   m_Name: Bennelli_M4
   m_TagString: Untagged
@@ -206,13 +205,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _modelWeapon: Shotgun
+  _weaponType: 5
   "_stor\u0421apacity": 5
   _maxCountStorBullets: 5
   _bulletsNumberInOneShoot: 5
   _intbulletsEjectionInOneShot: 1
   _bulletsConversionRate: 5
   _reloadTime: 4
-  _timetimeBetweenShots: 0.75
+  _timeBetweenShots: 0.1
   _xSpread: 45
   _ySpread: 45
   _audioSource: {fileID: 1953909541808336854}
@@ -226,6 +226,10 @@ MonoBehaviour:
   _usedTypeOfBullets: 2
   _bulletEjector: {fileID: 3589962491797309422}
   _weaponState: 0
+  _improvementCharacteristics:
+    <DataMaxCountStorBullets>k__BackingField: 0
+    <DataReloadTime>k__BackingField: 0
+    <DataTimeBetweenShots>k__BackingField: 0
 --- !u!65 &1397263667546487239
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -239,24 +243,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.19505465, y: 0.6169235, z: 2.9533954}
   m_Center: {x: -0.014547229, y: -0.19153824, z: 0.041606665}
---- !u!114 &8263103122785947900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1077604966908125014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73c5e6b318007e34ebf63df58f42a4de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _layerIndex: 11
-  _partsWeapon:
-  - {fileID: 1077604966908125014}
-  - {fileID: 4519019315683887009}
-  - {fileID: 4518828201416088645}
-  - {fileID: 4519095471173482329}
 --- !u!1 &4518828201416088645
 GameObject:
   m_ObjectHideFlags: 0

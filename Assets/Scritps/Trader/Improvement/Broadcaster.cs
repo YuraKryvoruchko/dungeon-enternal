@@ -9,6 +9,8 @@ namespace DungeonEternal.TrayderImprovement
         [SerializeField] private ImprovementSO _improvementSO;
 
         private TraderCell _traderCell;
+
+        public static event Action<ImprovementSO> OnBroadcastImprovement;
         
         private void Awake()
         {
@@ -22,8 +24,6 @@ namespace DungeonEternal.TrayderImprovement
         {
             _traderCell.OnBuyCell -= BroadcastImprovement;
         }
-
-        public static event Action<ImprovementSO> OnBroadcastImprovement;
 
         public void BroadcastImprovement()
         {

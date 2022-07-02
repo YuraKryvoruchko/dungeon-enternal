@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 6025162023068824964}
   - component: {fileID: 5379873757907869226}
   - component: {fileID: 7660458591830621848}
+  - component: {fileID: -5900801031664322742}
   m_Layer: 5
-  m_Name: LOLOLO
+  m_Name: IncreaseShotgunMagazineCapacityBy3Bullets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,6 +148,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _price: 20
+--- !u!114 &-5900801031664322742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982225112428237318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d4c87d1181fc964abe4ecfbbc691b22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _improvementSO: {fileID: 11400000, guid: 160be734198ecc64b805fe837fdaa039, type: 2}
 --- !u!1 &2141742752370296892
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,4 +239,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: LOLOLOLO
+  m_Text: Increase shotgun magazine capacity by 3 bullets
