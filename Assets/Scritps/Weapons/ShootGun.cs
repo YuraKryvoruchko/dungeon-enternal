@@ -18,23 +18,11 @@ namespace DungeonEternal.Weapons
         [Space]
         [SerializeField] private ImprovementCharacteristics _improvementCharacteristics;
 
-        private static Dictionary<string, ImprovementCharacteristics> s_keyValuePairs;
-
         public override event Action OnAttack;
         public override event Action WeaponEmpty;
 
         private void Start()
         {
-            //if (s_keyValuePairs.ContainsKey(ModelWeapon) == false)
-            //{
-            //    s_keyValuePairs.Add(ModelWeapon, _improvementCharacteristics);
-            //}
-            //else
-            //{
-            //    if (s_keyValuePairs.TryGetValue(ModelWeapon, out ImprovementCharacteristics improvementCharacteristics))
-            //        _improvementCharacteristics = improvementCharacteristics;
-            //}
-
             MaxCountStorBullets = _improvementCharacteristics.DataMaxCountStorBullets;
         }
 

@@ -31,6 +31,9 @@ namespace DungeonEternal.TrayderImprovement
         }
         private void AddImprovement(ImprovementSO improvement)
         {
+            if (VerifyImprovementType(improvement) == false)
+                return;
+
             foreach (var stoppedImprovement in _stoppedImprovements)
             {
                 if (stoppedImprovement == improvement)
