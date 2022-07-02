@@ -7,17 +7,15 @@ namespace DungeonEternal.TrayderImprovement
     {
         [SerializeField] private ImprovementType _improvementType;
         [Space]
-        [SerializeField] private List<ImprovementSO> _improvements;
+        [SerializeField] private List<ImprovementSO> _workedImprovements;
+        [SerializeField] private List<ImprovementSO> _stoppedImprovements;
 
         public void OnEnable()
         {
             Broadcaster.OnBroadcastImprovement += AddImprovement;
 
-            foreach(var improvement in _improvements)
-            {
-                if (improvement.Status == ImprovementSO.ImprovementStatus.Stopped)
-                    improvement.RunImprovement(gameObject);
-            }
+            foreach(var improvement in _workedImprovements)
+                improvement.RunImprovement(gameObject);
         }
         private void OnDisable()
         {
@@ -33,17 +31,15 @@ namespace DungeonEternal.TrayderImprovement
         }
         private void AddImprovement(ImprovementSO improvement)
         {
-            if (VerifyImprovementType(improvement) == false)
-                return;
-
-            if (_improvements.Contains(improvement) == false)
+            foreach (var stoppedImprovement in _stoppedImprovements)
             {
-                _improvements.Add(improvement);
+                if (stoppedImprovement == improvement)
+                {
+                    _workedImprovements.Add(stoppedImprovement);
+                    _stoppedImprovements.Remove(stoppedImprovement);
 
-                bool isActiveImprovement = improvement.RunImprovement(gameObject);
-
-                if (isActiveImprovement == false)
-                    DeleteImrovement(improvement);
+                    stoppedImprovement.RunImprovement(gameObject);
+                }
             }
         }
         private void AddImprovements(ImprovementSO[] improvements)
@@ -53,11 +49,11 @@ namespace DungeonEternal.TrayderImprovement
         }
         private void DeleteImrovement(ImprovementSO improvement)
         {
-            if (_improvements.Contains(improvement) == true)
+            if (_workedImprovements.Contains(improvement) == true)
             {
                 improvement.StopImprovement(gameObject);
 
-                _improvements.Remove(improvement);
+                _workedImprovements.Remove(improvement);
             }
         }
         private void DeleteImrovements(ImprovementSO[] improvements)
@@ -67,7 +63,7 @@ namespace DungeonEternal.TrayderImprovement
         }
         private void DeleteAllImrovements()
         {
-            _improvements.Clear();
+            _workedImprovements.Clear();
         }
     }
     public enum ImprovementType

@@ -4174,7 +4174,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _improvementType: 1
-  _improvements: []
+  _workedImprovements: []
+  _stoppedImprovements: []
 --- !u!4 &1022083402
 Transform:
   m_ObjectHideFlags: 0
@@ -6328,7 +6329,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _improvementType: 1
-  _improvements:
+  _workedImprovements: []
+  _stoppedImprovements:
   - {fileID: 11400000, guid: 160be734198ecc64b805fe837fdaa039, type: 2}
 --- !u!1 &1646017715
 GameObject:
@@ -7519,7 +7521,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _improvementType: 1
-  _improvements: []
+  _workedImprovements: []
+  _stoppedImprovements: []
 --- !u!1 &2084613528
 GameObject:
   m_ObjectHideFlags: 0
