@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DungeonEternal.TrayderImprovement
+namespace DungeonEternal.ImprovementSystem
 {
     public abstract class ImprovementSO : ScriptableObject
     {

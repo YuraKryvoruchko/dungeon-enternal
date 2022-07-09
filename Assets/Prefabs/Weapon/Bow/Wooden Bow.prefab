@@ -832,6 +832,7 @@ GameObject:
   - component: {fileID: 2796549899832590808}
   - component: {fileID: 178240386}
   - component: {fileID: 8685320578605288737}
+  - component: {fileID: 8007868512498854279}
   m_Layer: 0
   m_Name: Wooden Bow
   m_TagString: Untagged
@@ -1029,6 +1030,7 @@ MonoBehaviour:
   _usedTypeOfBullets: 3
   _bulletEjector: {fileID: 7401846357095062778}
   _weaponState: 0
+  <FirearmsDataSO>k__BackingField: {fileID: 11400000, guid: cc311e13b086dda4ea7a0ab35ad5555b, type: 2}
   _timeToMaxEnergy: 1
   _maxEnergy: 50
   _namePullingParameters: Pulling
@@ -1084,6 +1086,21 @@ MonoBehaviour:
   - {fileID: 5007415724918505358}
   - {fileID: 5006532274698882884}
   - {fileID: 5006903901612852454}
+--- !u!114 &8007868512498854279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5007799662865713728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513174bfe0294b141a7e8575182907bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _improvementType: 1
+  _workedImprovements: []
+  _stoppedImprovements: []
 --- !u!1 &5007876650676934980
 GameObject:
   m_ObjectHideFlags: 0

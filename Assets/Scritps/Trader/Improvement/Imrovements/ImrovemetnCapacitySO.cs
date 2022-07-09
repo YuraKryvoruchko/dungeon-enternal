@@ -2,9 +2,11 @@ using System;
 using UnityEngine;
 using DungeonEternal.Weapons;
 
-namespace DungeonEternal.TrayderImprovement.Improvements
+namespace DungeonEternal.ImprovementSystem
 {
-    [CreateAssetMenu(fileName = "ImrovemetnCapacitySO", menuName = "ScriptableObjects/Imrovemetns/ImrovemetnCapacitySO", order = 1)]
+    [CreateAssetMenu(fileName = "ImrovemetnCapacitySO", 
+                     menuName = "ScriptableObjects/Imrovemetns/ImrovemetnCapacitySO", 
+                     order = 1)]
     public class ImrovemetnCapacitySO : ImprovementSO
     {
         [SerializeField] private WeaponType[] _typesOfWeapons;

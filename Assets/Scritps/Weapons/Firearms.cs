@@ -1,6 +1,8 @@
 using System.Collections;
 using System;
 using UnityEngine;
+using DungeonEternal.ImprovementSystem;
+using DungeonEternal.Weapons.WeaponData;
 
 using Random = UnityEngine.Random;
 
@@ -31,7 +33,8 @@ namespace DungeonEternal.Weapons
     }
 
     [RequireComponent(typeof(AudioSource), typeof(Animator), typeof(BulletEjector))]
-    public abstract class Firearms : Weapon, IFirearms
+    public abstract class Firearms : Weapon, IFirearms, IImprovementStoreCapacity, 
+        IImprovementReloadSpeed, IImprovementRateOfFire
     {
         [Header("Base properties")]
         [SerializeField] private int _stor—apacity;
@@ -68,6 +71,8 @@ namespace DungeonEternal.Weapons
         [SerializeField] private BulletEjector _bulletEjector;
 
         [SerializeField] private WeaponState _weaponState;
+        [field: Space]
+        [field: SerializeField] protected FirearmsDataSO FirearmsDataSO { get; set; }
 
         private int _numberOfBulletsFromInventory = 0;
 
@@ -90,8 +95,8 @@ namespace DungeonEternal.Weapons
         protected int BulletsNumberInOneShoot { get => _bulletsNumberInOneShoot; }
         protected int IntbulletsEjectionInOneShot { get => _intbulletsEjectionInOneShot; }
 
-        protected float ReloadTime { get => _reloadTime; }
-        protected float TimeBetweenShots { get => _timeBetweenShots; }
+        protected float ReloadTime { get => _reloadTime; set => _reloadTime = value; }
+        protected float TimeBetweenShots { get => _timeBetweenShots; set => _timeBetweenShots = value; }
 
         protected float XSpread { get => _xSpread; }
         protected float YSpread { get => _ySpread; }
@@ -132,6 +137,11 @@ namespace DungeonEternal.Weapons
                 ReturnBullets?.Invoke(_numberOfBulletsFromInventory);
 
             _canShoot = false;
+        }
+
+        private void Start()
+        {
+            LoadAndSetCharacteristics();
         }
 
         public override abstract void Attack();
@@ -184,6 +194,13 @@ namespace DungeonEternal.Weapons
             CanShoot = true;
         }
 
+        private void LoadAndSetCharacteristics()
+        {
+            MaxCountStorBullets = FirearmsDataSO.DataMaxCountStorBullets;
+            ReloadTime = FirearmsDataSO.DataReloadTime;
+            TimeBetweenShots = FirearmsDataSO.DataTimeBetweenShots;
+        }
+
         private IEnumerator CheckingForTheTypeOfBullet(int typeBullets)
         {
             if (typeBullets > 0 && Stor—apacity != _maxCountStorBullets)
@@ -213,6 +230,51 @@ namespace DungeonEternal.Weapons
 
                 OnReload?.Invoke();
             }
+        }
+
+        public void SetNewCapacity(int newCapacity)
+        {
+            FirearmsDataSO.DataMaxCountStorBullets = MaxCountStorBullets = newCapacity;
+        }
+        public void IncreaseCapacityBy(int capacity)
+        {
+            FirearmsDataSO.DataMaxCountStorBullets = MaxCountStorBullets += capacity;
+        }
+        public void IncreaseCapacityByInPercentage(float percentage)
+        {
+            int capacity = Mathf.RoundToInt(MaxCountStorBullets * percentage);
+
+            FirearmsDataSO.DataMaxCountStorBullets = MaxCountStorBullets += capacity;
+        }
+
+        public void SetNewReloadSpeed(float newReloadSpeed)
+        {
+            FirearmsDataSO.DataReloadTime = ReloadTime = newReloadSpeed;
+        }
+        public void IncreaseReloadSpeedBy(float reloadSpeed)
+        {
+            FirearmsDataSO.DataReloadTime = ReloadTime += reloadSpeed;
+        }
+        public void IncreaseReloadSpeedByInPercentage(float percentage)
+        {
+            float speed = MaxCountStorBullets * percentage;
+
+            FirearmsDataSO.DataReloadTime = ReloadTime += speed;
+        }
+
+        public void SetNewRate(float newRate)
+        {
+            FirearmsDataSO.DataTimeBetweenShots = TimeBetweenShots = newRate;
+        }
+        public void IncreaseRateBy(float rate)
+        {
+            FirearmsDataSO.DataTimeBetweenShots = TimeBetweenShots += rate;
+        }
+        public void IncreaseRateByInPercentage(float percentage)
+        {
+            float rate = TimeBetweenShots * percentage;
+
+            FirearmsDataSO.DataTimeBetweenShots = TimeBetweenShots += rate;
         }
     }
 }

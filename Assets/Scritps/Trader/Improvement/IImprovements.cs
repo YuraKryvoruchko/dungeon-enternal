@@ -1,4 +1,4 @@
-namespace DungeonEternal.TrayderImprovement
+namespace DungeonEternal.ImprovementSystem
 {
     public interface IImprovementDamage
     {

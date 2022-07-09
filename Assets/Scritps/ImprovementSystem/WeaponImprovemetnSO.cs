@@ -1,31 +1,55 @@
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using DungeonEternal.TrayderImprovement;
+using DungeonEternal.Weapons;
 
-namespace DungeonEternal.TrayderImprovement
+namespace DungeonEternal.ImprovementSystem
 {
-    public class InventoryToImprovements : MonoBehaviour
+    [CreateAssetMenu(fileName = "InventoryForImprovemet", 
+                     menuName = "ScriptableObjects/Imrovemetns/InventoryForImprovemet", 
+                     order = 1)]
+    public class WeaponImprovemetnSO : ScriptableObject
     {
         [SerializeField] private ImprovementType _improvementType;
+        [SerializeField] private WeaponType _weaponType;
         [Space]
         [SerializeField] private List<ImprovementSO> _workedImprovements;
         [SerializeField] private List<ImprovementSO> _stoppedImprovements;
 
-        public void OnEnable()
+        public event Action<ImprovementSO> OnRunImprovement;
+        public event Action<ImprovementSO> OnReturnImprovement;
+
+        public void Awake()
         {
             Broadcaster.OnBroadcastImprovement += AddImprovement;
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
-        private void OnDisable()
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             Broadcaster.OnBroadcastImprovement -= AddImprovement;
+            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
         private bool VerifyImprovementType(ImprovementSO improvement)
         {
-            if (improvement.ImprovementType == _improvementType)
+            if (improvement.ImprovementType != _improvementType)
+                return false;
+
+            if (VerifyWeaponType(improvement) == true)
                 return true;
             else
                 return false;
         }
+        private bool VerifyWeaponType(ImprovementSO improvement)
+        {
+            if (improvement == new ImrovemetnCapacitySO())
+                return false;
+
+            return true;
+        }
+
         private void AddImprovement(ImprovementSO improvement)
         {
             if (VerifyImprovementType(improvement) == false)
@@ -38,7 +62,7 @@ namespace DungeonEternal.TrayderImprovement
                     _workedImprovements.Add(stoppedImprovement);
                     _stoppedImprovements.Remove(stoppedImprovement);
 
-                    stoppedImprovement.RunImprovement(gameObject);
+                    OnRunImprovement?.Invoke(improvement);
                 }
             }
         }
@@ -51,7 +75,7 @@ namespace DungeonEternal.TrayderImprovement
         {
             if (_workedImprovements.Contains(improvement) == true)
             {
-                improvement.StopImprovement(gameObject);
+                OnReturnImprovement?.Invoke(improvement);
 
                 _workedImprovements.Remove(improvement);
             }
@@ -65,12 +89,5 @@ namespace DungeonEternal.TrayderImprovement
         {
             _workedImprovements.Clear();
         }
-    }
-    public enum ImprovementType
-    {
-        Player,
-        Weapon,
-        Bullet,
-        Item
     }
 }

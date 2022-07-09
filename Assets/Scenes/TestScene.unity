@@ -4017,10 +4017,7 @@ MonoBehaviour:
   _usedTypeOfBullets: 0
   _bulletEjector: {fileID: 0}
   _weaponState: 0
-  _improvementCharacteristics:
-    <DataMaxCountStorBullets>k__BackingField: 0
-    <DataReloadTime>k__BackingField: 0
-    <DataTimeBetweenShots>k__BackingField: 0
+  <FirearmsDataSO>k__BackingField: {fileID: 0}
 --- !u!114 &1022083397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6325,7 +6322,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1638027459}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 513174bfe0294b141a7e8575182907bc, type: 3}
+  m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
   _improvementType: 1
@@ -8404,6 +8401,14 @@ PrefabInstance:
     - target: {fileID: 7076885295659122433, guid: 6d1297c9971c63340829fe68ecbeeda7, type: 3}
       propertyPath: _weaponType
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076885295659122433, guid: 6d1297c9971c63340829fe68ecbeeda7, type: 3}
+      propertyPath: _improvementCharacteristics.<DataReloadTime>k__BackingField
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076885295659122433, guid: 6d1297c9971c63340829fe68ecbeeda7, type: 3}
+      propertyPath: _improvementCharacteristics.<DataTimeBetweenShots>k__BackingField
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7076885295659122433, guid: 6d1297c9971c63340829fe68ecbeeda7, type: 3}
       propertyPath: _improvementCharacteristics.<DataMaxCountStorBullets>k__BackingField

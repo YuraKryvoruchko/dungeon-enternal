@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
-using DungeonEternal.TrayderImprovement;
 
 namespace DungeonEternal.Weapons
 {
@@ -13,39 +11,10 @@ namespace DungeonEternal.Weapons
         public float DataTimeBetweenShots { get; set; }
     }
 
-    public class ShootGun : Firearms, IImprovementStoreCapacity, IImprovementReloadSpeed
+    public class ShootGun : Firearms
     {
-        [Space]
-        [SerializeField] private ImprovementCharacteristics _improvementCharacteristics;
-
-        private static Dictionary<string, ImprovementCharacteristics> s_keyValuePairs;
-
         public override event Action OnAttack;
         public override event Action WeaponEmpty;
-
-        private void Start()
-        {
-            if (s_keyValuePairs.ContainsKey(ModelWeapon) == false)
-            {
-                s_keyValuePairs.Add(ModelWeapon, _improvementCharacteristics);
-            }
-            else
-            {
-                if (s_keyValuePairs.TryGetValue(ModelWeapon, out ImprovementCharacteristics improvementCharacteristics))
-                    _improvementCharacteristics = improvementCharacteristics;
-            }
-
-            MaxCountStorBullets = _improvementCharacteristics.DataMaxCountStorBullets;
-        }
-
-        [Serializable]
-        public struct ImprovementCharacteristics
-        {
-            [field: SerializeField] public int DataMaxCountStorBullets { get; set; }
-
-            [field: SerializeField] public float DataReloadTime { get; set; }
-            [field: SerializeField] public float DataTimeBetweenShots { get; set ; }
-        }
 
         public override void Attack()
         {
@@ -87,46 +56,6 @@ namespace DungeonEternal.Weapons
             {
                 WeaponEmpty?.Invoke();
             }
-        }
-
-        public void SetNewCapacity(int newCapacity)
-        {
-            MaxCountStorBullets = newCapacity;
-            _improvementCharacteristics.DataMaxCountStorBullets = newCapacity;
-
-            if (s_keyValuePairs.TryGetValue(ModelWeapon, out ImprovementCharacteristics improvementCharacteristics))
-                improvementCharacteristics.DataMaxCountStorBullets = _improvementCharacteristics.DataMaxCountStorBullets;
-        }
-        public void IncreaseCapacityBy(int capacity)
-        {
-            MaxCountStorBullets += capacity;
-            _improvementCharacteristics.DataMaxCountStorBullets += capacity;
-
-            if (s_keyValuePairs.TryGetValue(ModelWeapon, out ImprovementCharacteristics improvementCharacteristics))
-                improvementCharacteristics.DataMaxCountStorBullets += _improvementCharacteristics.DataMaxCountStorBullets;
-        }
-        public void IncreaseCapacityByInPercentage(float percentage)
-        {
-            int capacity = Mathf.RoundToInt(MaxCountStorBullets * percentage);
-
-            MaxCountStorBullets += capacity;
-            _improvementCharacteristics.DataMaxCountStorBullets += capacity;
-
-            if (s_keyValuePairs.TryGetValue(ModelWeapon, out ImprovementCharacteristics improvementCharacteristics))
-                improvementCharacteristics.DataMaxCountStorBullets += _improvementCharacteristics.DataMaxCountStorBullets;
-        }
-
-        public void SetNewReloadSpeed(float newReloadSpeed)
-        {
-            throw new NotImplementedException();
-        }
-        public void IncreaseReloadSpeedBy(float reloadSpeed)
-        {
-            throw new NotImplementedException();
-        }
-        public void IncreaseReloadSpeedByInPercentage(float percentage)
-        {
-            throw new NotImplementedException();
         }
     }
 }

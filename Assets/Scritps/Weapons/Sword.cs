@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using DungeonEternal.ImprovementSystem;
+using DungeonEternal.Weapons.WeaponData;
 
 namespace DungeonEternal.Weapons
 {
@@ -9,7 +11,7 @@ namespace DungeonEternal.Weapons
         public void Eject(Vector3 direction, float energy);
     }
 
-    public class Sword : СoldSteel
+    public class Sword : СoldSteel, IImprovementDamage, IImprovementReloadSpeed
     {
         [Header("Sword properties")]
         [SerializeField] private float _damage;
@@ -26,6 +28,9 @@ namespace DungeonEternal.Weapons
         [Header("Animator properties")]
         [SerializeField] private Animator _animator;
         [SerializeField] private string _nameAttackParameter = "Attack";
+
+        [Header("Data properties")]
+        [SerializeField] private SwordDataSO _swordDataSO;
 
         public override event Action OnAttack;
 
@@ -56,6 +61,7 @@ namespace DungeonEternal.Weapons
         }
         public override void Attack(Transform target) { }
 
+
         private void InflictDamage(IHealth health)
         {
             Debug.Log(health.GetType());
@@ -76,6 +82,35 @@ namespace DungeonEternal.Weapons
             yield return new WaitForSeconds(_speedAttack);
 
             StateSteel = StateСoldSteel.None;
+        }
+        public void SetNewDamage(float newDamage)
+        {
+            _swordDataSO.Damage = _damage = newDamage;
+        }
+        public void IncreaseDamageBy(float damage)
+        {
+            _swordDataSO.Damage = _damage += damage;
+        }
+        public void IncreaseDamageByInPercentage(float percentage)
+        {
+            float damage = _damage * percentage;
+
+            _swordDataSO.Damage = _damage += damage;
+        }
+
+        public void SetNewReloadSpeed(float newReloadSpeed)
+        {
+            _swordDataSO.SpeedAttack = _speedAttack = newReloadSpeed;
+        }
+        public void IncreaseReloadSpeedBy(float reloadSpeed)
+        {
+            _swordDataSO.SpeedAttack = _speedAttack += reloadSpeed;
+        }
+        public void IncreaseReloadSpeedByInPercentage(float percentage)
+        {
+            float speed = _speedAttack * percentage;
+
+            _swordDataSO.SpeedAttack = _speedAttack += speed;
         }
     }
 }

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1177009526}
   - component: {fileID: 1177009527}
   - component: {fileID: 4569496443155518187}
+  - component: {fileID: 4079775478261331}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -109,6 +110,7 @@ MonoBehaviour:
   _audioAttack: {fileID: 8300000, guid: 4922c764489056e40805ce6ca0b9a2f6, type: 3}
   _animator: {fileID: 8583507119043274784}
   _nameAttackParameter: Attack
+  _swordDataSO: {fileID: 11400000, guid: 002c79e5b6ca07642af7de40fd74e7d4, type: 2}
 --- !u!82 &914849589458300500
 AudioSource:
   m_ObjectHideFlags: 0
@@ -266,3 +268,18 @@ MonoBehaviour:
   _layerIndex: 11
   _partsWeapon:
   - {fileID: 18925201629947217}
+--- !u!114 &4079775478261331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18925201629947217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513174bfe0294b141a7e8575182907bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _improvementType: 1
+  _workedImprovements: []
+  _stoppedImprovements: []

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using DungeonEternal.ImprovementSystem;
 
 namespace DungeonEternal.TrayderImprovement
 {
