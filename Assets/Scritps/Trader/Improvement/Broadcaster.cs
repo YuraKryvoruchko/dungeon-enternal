@@ -1,12 +1,12 @@
-using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace DungeonEternal.TrayderImprovement
 {
     [RequireComponent(typeof(TraderCell))]
     public class Broadcaster : MonoBehaviour
     {
-        [SerializeField] private ImprovementSO _improvementSO;
+        [SerializeField] private UnityEvent OnBroadcastImprovement;    
 
         private TraderCell _traderCell;
         
@@ -23,11 +23,9 @@ namespace DungeonEternal.TrayderImprovement
             _traderCell.OnBuyCell -= BroadcastImprovement;
         }
 
-        public static event Action<ImprovementSO> OnBroadcastImprovement;
-
         public void BroadcastImprovement()
         {
-            OnBroadcastImprovement?.Invoke(_improvementSO);
+            OnBroadcastImprovement?.Invoke();
         }
     }
 }

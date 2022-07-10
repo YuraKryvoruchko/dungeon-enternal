@@ -1,9 +1,16 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
 
 namespace DungeonEternal.Weapons
 {
+    public interface IWeaponDataOnCreate
+    {
+        public int DataMaxCountStorBullets { get; set; }
+
+        public float DataReloadTime { get; set; }
+        public float DataTimeBetweenShots { get; set; }
+    }
+
     public class ShootGun : Firearms
     {
         public override event Action OnAttack;
@@ -18,7 +25,7 @@ namespace DungeonEternal.Weapons
                 Shoot();
             }
         }
-
+        
         private void Shoot()
         {
             if (StorСapacity > 0)

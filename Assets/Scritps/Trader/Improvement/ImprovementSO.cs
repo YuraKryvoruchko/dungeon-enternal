@@ -1,17 +1,28 @@
 using UnityEngine;
 
-namespace DungeonEternal.TrayderImprovement
+namespace DungeonEternal.ImprovementSystem
 {
-    [CreateAssetMenu(fileName = "ImprovementSO", menuName = "ScriptableObjects/Improvement", order = 2)]
-    public class ImprovementSO : ScriptableObject
+    public abstract class ImprovementSO : ScriptableObject
     {
         [SerializeField] private ImprovementType _improvementType;
+        [Space]
+        [SerializeField] private ImprovementStatus _status;
+
+        private GameObject _improvementObject; 
+        
+        public enum ImprovementStatus
+        {
+            Working,
+            Stopped
+        }
+
+        public ImprovementStatus Status { get => _status; protected set => _status = value; }
+
+        protected GameObject ImprovementObject { get => _improvementObject; set => _improvementObject = value; }
 
         public ImprovementType ImprovementType { get => _improvementType; }
 
-        public void RunImprovement()
-        {
-            
-        }
+        public abstract bool RunImprovement(GameObject improvementObject);
+        public abstract void StopImprovement(GameObject improvementObject);
     }
 }
