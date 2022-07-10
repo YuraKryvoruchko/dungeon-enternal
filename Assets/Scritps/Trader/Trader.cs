@@ -1,6 +1,6 @@
+using DungeonEternal.Player;
 using System;
 using UnityEngine;
-using DungeonEternal.Player;
 
 using Random = UnityEngine.Random;
 
@@ -18,11 +18,6 @@ namespace DungeonEternal.TrayderImprovement
         public static event Action OnStartTrade;
         public static event Action OnEndTrade;
 
-        private void Start()
-        {
-            CreateImprovements();
-        }
-
         public void StartTrade(Purse playerPurse)
         {
             _purse = playerPurse;
@@ -31,6 +26,11 @@ namespace DungeonEternal.TrayderImprovement
 
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
+
+            if (_improvementsList.Length > 0)
+                CreateImprovements();
+            else
+                Debug.LogWarning("Add a improvements!");
 
             OnStartTrade?.Invoke();
         }
@@ -46,7 +46,7 @@ namespace DungeonEternal.TrayderImprovement
 
         private void BuyCell(TraderCell cell)
         {
-            if(_purse.Coins >= cell.Price)
+            if (_purse.Coins >= cell.Price)
             {
                 _purse.Coins -= cell.Price;
 
@@ -55,12 +55,9 @@ namespace DungeonEternal.TrayderImprovement
         }
         private void CreateImprovements()
         {
-            int countImprovement = Random.Range(0, _improvementsList.Length);
+            int countImprovement = Random.Range(1, _improvementsList.Length);
 
-            if (countImprovement == _improvementsList.Length)
-                countImprovement = _improvementsList.Length - 1;
-
-            int[] createImprovements = new int[countImprovement];
+            int?[] createImprovements = new int?[countImprovement];
 
             for (int i = 0; i < countImprovement; i++)
             {
@@ -71,7 +68,7 @@ namespace DungeonEternal.TrayderImprovement
 
                 if (NumberMatches(createImprovements, numberOfImprovements) == false)
                 {
-                    TraderCell cell = Instantiate(_improvementsList[numberOfImprovements], 
+                    TraderCell cell = Instantiate(_improvementsList[numberOfImprovements],
                         _container.transform, false);
 
                     cell.OnTryBuyCell += BuyCell;
@@ -84,7 +81,7 @@ namespace DungeonEternal.TrayderImprovement
                 }
             }
         }
-        private bool NumberMatches(int[] array, int number)
+        private bool NumberMatches(int?[] array, int number)
         {
             bool matchFound = false;
 

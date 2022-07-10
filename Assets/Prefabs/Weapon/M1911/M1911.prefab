@@ -519,7 +519,7 @@ GameObject:
   - component: {fileID: 4571419382836106883}
   - component: {fileID: 96467319467004138}
   - component: {fileID: -4605647279185511784}
-  - component: {fileID: 3641409068093037968}
+  - component: {fileID: 1947957184460516807}
   m_Layer: 0
   m_Name: M1911
   m_TagString: Untagged
@@ -764,7 +764,7 @@ MonoBehaviour:
   - {fileID: 2419677161229572784}
   - {fileID: 2420679614446756442}
   - {fileID: 2420396474084974170}
---- !u!114 &3641409068093037968
+--- !u!114 &1947957184460516807
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -773,9 +773,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7043401737259677051}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 513174bfe0294b141a7e8575182907bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 5abe9c7ba8a81474d9c1403eaab4ee68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _improvementType: 1
-  _workedImprovements: []
-  _stoppedImprovements: []
+  _inventoryForImprovemetSO: {fileID: 11400000, guid: d9fd3291f7c12f34da1c1d048feb4b1c, type: 2}

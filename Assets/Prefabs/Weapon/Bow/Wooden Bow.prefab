@@ -832,7 +832,7 @@ GameObject:
   - component: {fileID: 2796549899832590808}
   - component: {fileID: 178240386}
   - component: {fileID: 8685320578605288737}
-  - component: {fileID: 8007868512498854279}
+  - component: {fileID: 2133032859164920222}
   m_Layer: 0
   m_Name: Wooden Bow
   m_TagString: Untagged
@@ -1086,7 +1086,7 @@ MonoBehaviour:
   - {fileID: 5007415724918505358}
   - {fileID: 5006532274698882884}
   - {fileID: 5006903901612852454}
---- !u!114 &8007868512498854279
+--- !u!114 &2133032859164920222
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1095,12 +1095,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5007799662865713728}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 513174bfe0294b141a7e8575182907bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 5abe9c7ba8a81474d9c1403eaab4ee68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _improvementType: 1
-  _workedImprovements: []
-  _stoppedImprovements: []
+  _inventoryForImprovemetSO: {fileID: 11400000, guid: fd21df9c968c63e41a2a278a92807517, type: 2}
 --- !u!1 &5007876650676934980
 GameObject:
   m_ObjectHideFlags: 0

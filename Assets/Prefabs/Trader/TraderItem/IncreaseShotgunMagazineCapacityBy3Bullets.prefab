@@ -160,7 +160,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d4c87d1181fc964abe4ecfbbc691b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _improvementSO: {fileID: 11400000, guid: 160be734198ecc64b805fe837fdaa039, type: 2}
+  OnBroadcastImprovement:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 7143f1f6468f0ce43bfc6d730ee49df4, type: 2}
+        m_TargetAssemblyTypeName: DungeonEternal.ImprovementSystem.ImprovementsInventory,
+          Assembly-CSharp
+        m_MethodName: AddImprovement
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 160be734198ecc64b805fe837fdaa039, type: 2}
+          m_ObjectArgumentAssemblyTypeName: DungeonEternal.ImprovementSystem.ImprovementSO,
+            Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2141742752370296892
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,17 +3,17 @@ using DungeonEternal.ImprovementSystem;
 
 public class ImprovementInstaller : MonoBehaviour
 {
-    [SerializeField] private WeaponImprovemetnSO _weaponImprovemetnSO;
+    [SerializeField] private ImprovementsInventory _inventoryForImprovemetSO;
 
     private void OnEnable()
     {
-        _weaponImprovemetnSO.OnRunImprovement += RunImprovemet;
-        _weaponImprovemetnSO.OnReturnImprovement += StopImprovemet;
+        _inventoryForImprovemetSO.OnRunImprovement += RunImprovemet;
+        _inventoryForImprovemetSO.OnReturnImprovement += StopImprovemet;
     }
     private void OnDisable()
     {
-        _weaponImprovemetnSO.OnRunImprovement -= RunImprovemet;
-        _weaponImprovemetnSO.OnReturnImprovement -= StopImprovemet;
+        _inventoryForImprovemetSO.OnRunImprovement -= RunImprovemet;
+        _inventoryForImprovemetSO.OnReturnImprovement -= StopImprovemet;
     }
 
     private void RunImprovemet(ImprovementSO improvement)
@@ -24,12 +24,4 @@ public class ImprovementInstaller : MonoBehaviour
     {
         improvement.StopImprovement(gameObject);
     }
-}
-
-public enum ImprovementType
-{
-    Weapon,
-    Player,
-    Enemy,
-    Item
 }

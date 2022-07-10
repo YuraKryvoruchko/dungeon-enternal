@@ -2,18 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using DungeonEternal.TrayderImprovement;
-using DungeonEternal.Weapons;
 
 namespace DungeonEternal.ImprovementSystem
 {
-    [CreateAssetMenu(fileName = "InventoryForImprovemet", 
-                     menuName = "ScriptableObjects/Imrovemetns/InventoryForImprovemet", 
+    [CreateAssetMenu(fileName = "ImprovementsInventoryFor", 
+                     menuName = "ScriptableObjects/Imrovemetns/ImprovementsInventory", 
                      order = 1)]
-    public class WeaponImprovemetnSO : ScriptableObject
+    public class ImprovementsInventory : ScriptableObject
     {
         [SerializeField] private ImprovementType _improvementType;
-        [SerializeField] private WeaponType _weaponType;
         [Space]
         [SerializeField] private List<ImprovementSO> _workedImprovements;
         [SerializeField] private List<ImprovementSO> _stoppedImprovements;
@@ -23,47 +20,33 @@ namespace DungeonEternal.ImprovementSystem
 
         public void Awake()
         {
-            Broadcaster.OnBroadcastImprovement += AddImprovement;
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            Broadcaster.OnBroadcastImprovement -= AddImprovement;
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
         private bool VerifyImprovementType(ImprovementSO improvement)
         {
-            if (improvement.ImprovementType != _improvementType)
-                return false;
-
-            if (VerifyWeaponType(improvement) == true)
+            if (improvement.ImprovementType == _improvementType)
                 return true;
-            else
-                return false;
-        }
-        private bool VerifyWeaponType(ImprovementSO improvement)
-        {
-            if (improvement == new ImrovemetnCapacitySO())
-                return false;
 
-            return true;
+            Debug.LogWarning("Improvement improvementType != base improvementType");
+
+            return false;
         }
 
-        private void AddImprovement(ImprovementSO improvement)
+        public void AddImprovement(ImprovementSO improvement)
         {
             if (VerifyImprovementType(improvement) == false)
                 return;
 
-            foreach (var stoppedImprovement in _stoppedImprovements)
+            if(_workedImprovements.Contains(improvement) == false)
             {
-                if (stoppedImprovement == improvement)
-                {
-                    _workedImprovements.Add(stoppedImprovement);
-                    _stoppedImprovements.Remove(stoppedImprovement);
+                _workedImprovements.Add(improvement);
 
-                    OnRunImprovement?.Invoke(improvement);
-                }
+                OnRunImprovement?.Invoke(improvement);
             }
         }
         private void AddImprovements(ImprovementSO[] improvements)

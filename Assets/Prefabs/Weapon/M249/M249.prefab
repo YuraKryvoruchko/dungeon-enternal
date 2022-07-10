@@ -454,6 +454,7 @@ GameObject:
   - component: {fileID: 3565651821969039521}
   - component: {fileID: 8633687237205554734}
   - component: {fileID: 7424546881021025061}
+  - component: {fileID: 5161687779526712426}
   m_Layer: 0
   m_Name: M249
   m_TagString: Untagged
@@ -653,3 +654,16 @@ MonoBehaviour:
   <FirearmsDataSO>k__BackingField: {fileID: 11400000, guid: 8409c6ee1b41f5f448c96a0577ee3c84, type: 2}
   _xSpreadBot: 0.7
   _ySpreadBot: 0.4
+--- !u!114 &5161687779526712426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3169606969039459910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5abe9c7ba8a81474d9c1403eaab4ee68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventoryForImprovemetSO: {fileID: 11400000, guid: 4d8e038269409fe4a827da4cbfe8adae, type: 2}

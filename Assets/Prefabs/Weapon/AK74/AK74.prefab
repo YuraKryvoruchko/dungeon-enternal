@@ -632,7 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5abe9c7ba8a81474d9c1403eaab4ee68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponImprovemetnSO: {fileID: 0}
+  _inventoryForImprovemetSO: {fileID: 11400000, guid: 93769b149c7a7f045a09498e32c08d4f, type: 2}
 --- !u!1 &5093517610898558042
 GameObject:
   m_ObjectHideFlags: 0
